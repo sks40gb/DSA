@@ -26,29 +26,29 @@ public class P21_ZigzagConversion {
     }
 
     public String convert(String s, int numRows) {
-        boolean down = true;
-        String[] arr = new String[numRows];
-        Arrays.fill(arr, "");
-
-        int index = 1;
-        while (index < s.length()) {
-            if (down) {
-                for (int j = 1; j <= numRows - 1 && index < s.length(); j++) {
-                    arr[j] += s.charAt(index);
-                    index++;
-                }
-                down = false;
-            } else {
-                for (int j = numRows - 2; j >= 0 && index < s.length(); j--) {
-                    arr[j] += s.charAt(index);
-                    index++;
-                }
-                down = true;
-            }
+        if (numRows == 1 || s.length() <= numRows){
+            return s;
         }
-        StringBuilder result = new StringBuilder(String.valueOf(s.charAt(0)));
-        for (int i = 0; i < arr.length; i++) {
-            result.append(arr[i]);
+
+        StringBuilder[] rows = new StringBuilder[numRows];
+        for (int i = 0; i < numRows; i++){
+            rows[i] = new StringBuilder();
+        }
+
+        int currRow = 0;
+        boolean goingDown = false;
+
+        for (char c : s.toCharArray()) {
+            rows[currRow].append(c);
+            if (currRow == 0 || currRow == numRows - 1) {
+                goingDown = !goingDown;
+            }
+            currRow += goingDown ? 1 : -1;
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (StringBuilder row : rows) {
+            result.append(row);
         }
         return result.toString();
     }
