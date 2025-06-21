@@ -29,6 +29,7 @@ public class P14_Candy {
         int[] left = new int[n];
         left[0] = 1;
 
+        // Traverse from left to right
         for (int i = 1; i < n; i++) {
             if (ratings[i] > ratings[i - 1]) {
                 left[i] = left[i - 1] + 1;
@@ -40,6 +41,7 @@ public class P14_Candy {
         int[] right = new int[n];
         right[n - 1] = 1;
 
+        // Traverse from right to left
         for (int i = n - 2; i >= 0; i--) {
             if (ratings[i] > ratings[i + 1]) {
                 right[i] = right[i + 1] + 1;
@@ -48,6 +50,7 @@ public class P14_Candy {
             }
         }
 
+        // Sum up the candies
         int result = 0;
         for (int i = 0; i < n; i++) {
             result += Math.max(left[i], right[i]);
