@@ -27,6 +27,13 @@ public class ArrayUtil {
         System.out.println();
     }
 
+    public static void print1D(String[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println("-----");
+            System.out.println(arr[i]);
+        }
+    }
+
     public static void print1D(char[] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(" " + arr[i]);
