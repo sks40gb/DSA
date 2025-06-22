@@ -26,20 +26,20 @@ public class P21_ZigzagConversion {
     }
 
     public String convert(String s, int numRows) {
-        if (numRows == 1 || s.length() <= numRows){
+        if (numRows == 1 || s.length() <= numRows) {
             return s;
         }
 
         StringBuilder[] rows = new StringBuilder[numRows];
-        for (int i = 0; i < numRows; i++){
+        for (int i = 0; i < rows.length; i++) {
             rows[i] = new StringBuilder();
         }
 
         int currRow = 0;
         boolean goingDown = false;
 
-        for (char c : s.toCharArray()) {
-            rows[currRow].append(c);
+        for (int i = 0; i < s.length(); i++) {
+            rows[currRow].append(s.charAt(i));
             if (currRow == 0 || currRow == numRows - 1) {
                 goingDown = !goingDown;
             }
