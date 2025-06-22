@@ -32,14 +32,14 @@ public class P5_3Sum {
             }
 
             int target = -nums[i];
-            twoSum(nums, target, i + 1, nums[i], result);
+            twoSum(nums, target, i + 1, result);
         }
         return result;
     }
 
-    private void twoSum(int[] nums, int target, int start, int first, List<List<Integer>> result) {
-
-        int left = start;
+    private void twoSum(int[] nums, int target, int startIndex, List<List<Integer>> result) {
+        int first = -target;
+        int left = startIndex;
         int right = nums.length - 1;
 
         while (left < right) {
