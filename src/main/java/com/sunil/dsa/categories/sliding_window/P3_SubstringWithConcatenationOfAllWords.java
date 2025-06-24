@@ -16,11 +16,11 @@ Output: [6,9,12]
 @TODO : Retry
  */
 
-public class P4_SubstringWithConcatenationOfAllWords {
+public class P3_SubstringWithConcatenationOfAllWords {
 
     public static void main(String[] args) {
-        P4_SubstringWithConcatenationOfAllWords o =
-                new P4_SubstringWithConcatenationOfAllWords();
+        P3_SubstringWithConcatenationOfAllWords o =
+                new P3_SubstringWithConcatenationOfAllWords();
 
         String s = "barfoothefoobarman";
         String[] words = {"foo","bar"};
