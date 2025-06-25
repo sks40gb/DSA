@@ -1,8 +1,6 @@
 package com.sunil.dsa.categories.hashmap;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /*
 https://leetcode.com/problems/group-anagrams/description/
@@ -18,8 +16,29 @@ public class P5_GroupAnagrams {
         System.out.println(o.groupAnagrams(strs));
     }
 
-
     public List<List<String>> groupAnagrams(String[] strs) {
+
+        Map<String, List<String>> map = new HashMap<>();
+        for (int i = 0; i < strs.length; i++) {
+
+            String word = strs[i];
+            char[] arr = word.toCharArray();
+
+            Arrays.sort(arr);
+            String key = new String(arr);
+
+            if(map.containsKey(key)){
+                map.get(key).add(word);
+            }else{
+                List<String> list = new ArrayList<>();
+                list.add(word);
+                map.put(key, list);
+            }
+        }
+        return new ArrayList<>(map.values());
+    }
+
+    public List<List<String>> groupAnagrams2(String[] strs) {
         List<List<String>> result = new ArrayList<>();
         for (int i = 0; i < strs.length; i++) {
             String word = strs[i];
