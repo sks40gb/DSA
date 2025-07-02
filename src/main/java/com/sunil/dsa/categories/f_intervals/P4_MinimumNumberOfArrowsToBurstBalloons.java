@@ -25,12 +25,31 @@ public class P4_MinimumNumberOfArrowsToBurstBalloons {
     }
 
     public int findMinArrowShots(int[][] points) {
-        Arrays.sort(points, (a, b)-> Integer.compare(a[1], b[1]));
+        Arrays.sort(points, (a, b) -> Integer.compare(a[0], b[0]));
+        int[] prev = points[0];
+        int count = 1;
+        for (int i = 1; i < points.length; i++) {
+            int[] cur = points[i];
+            //overlap
+            if (prev[1] >= cur[0]) {
+                prev[0] = Math.max(prev[0], cur[0]);
+                prev[1] = Math.min(prev[1], cur[1]);
+            } else {
+
+                prev = cur;
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int findMinArrowShots2(int[][] points) {
+        Arrays.sort(points, (a, b) -> Integer.compare(a[1], b[1]));
         int[] current = points[0];
         int arrow = 1;
 
-        for(int i=1; i< points.length; i++ ){
-            if(points[i][0] > current[1]){
+        for (int i = 1; i < points.length; i++) {
+            if (points[i][0] > current[1]) {
                 arrow++;
                 current = points[i];
             }
