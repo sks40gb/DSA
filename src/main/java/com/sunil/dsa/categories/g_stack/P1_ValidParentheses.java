@@ -18,10 +18,10 @@ Input: s = "(]"
 Output: false
  */
 
-public class P_ValidParentheses {
+public class P1_ValidParentheses {
 
     public static void main(String[] args) {
-        P_ValidParentheses o = new P_ValidParentheses();
+        P1_ValidParentheses o = new P1_ValidParentheses();
         String s = "()[]{}";
         System.out.println(o.isValid(s));
     }
