@@ -4,7 +4,7 @@ import t150.linkedlist.ListNode;
 
 public class LinkedListUtil {
 
-    public static ListNode constructLinkedList(int[] arr) {
+    public static ListNode constructLinkedList(int ... arr) {
         if (arr == null || arr.length == 0) {
             return null;
         }
