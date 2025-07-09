@@ -24,9 +24,49 @@ public class P7_ReverseNodesInKGroup {
         LinkedListUtil.print(result);
     }
 
-    //TODO
     public ListNode reverseKGroup(ListNode head, int k) {
-        
+        if (head == null || k == 1){
+            return head;
+        }
+
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        ListNode groupPrev = dummy;   //[x]
+
+        while (true) {
+            ListNode kth = getKthNode(groupPrev, k); // [x], [1], [2], [3], [4], [5] => [2]
+            if (kth == null) {
+                break;
+            }
+
+            ListNode groupNext = kth.next;    //[3]
+
+            // Reverse the group
+            ListNode prev = groupNext;        //[3]
+            ListNode curr = groupPrev.next;   //[1]
+
+            while (curr != groupNext) {
+                ListNode tmp = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = tmp;
+            }
+
+            // Connect previous group to new head
+            ListNode tmp = groupPrev.next;
+            groupPrev.next = kth;
+            groupPrev = tmp;
+        }
+
+        return dummy.next;
+    }
+
+    private ListNode getKthNode(ListNode head, int k) {
+        while (head != null && k > 0) {
+            head = head.next;
+            k--;
+        }
         return head;
     }
 
